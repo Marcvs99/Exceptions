@@ -77,11 +77,22 @@ int main()
 
 char character(char start, int offset)
 {
-	
-		if ((start < 123 && start > 96) || (start < 91 && start > 64))
+	int target = start + offset;
+
+		if (start < 123 && start > 96)
 		{
-			int target = start + offset;
-			if ((target < 123 && target > 96) || (target < 91 && target > 64))
+			if (target < 123 && target > 96)
+			{
+				return static_cast<char>(static_cast<int>(start) + offset);
+			}
+			else
+			{
+				throw InvalidRangeException();
+			}
+		}
+		if (start < 91 && start > 64)
+		{
+			if (target < 91 && target > 64)
 			{
 				return static_cast<char>(static_cast<int>(start) + offset);
 			}
